@@ -1,0 +1,101 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/10048b50700333.58d779ea99e37.gif);
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+}
+
+.login-box {
+  width: 350px; 
+  height: auto; /* Cambiado a auto para que se ajuste al contenido */
+  background-color: rgba(20, 20, 20, 0.8); /* Color de fondo más oscuro */
+  border-radius: 10px; /* Radio de borde más sutil */
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 40px 30px; /* Espaciado ajustado */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+}
+
+.login-box .avatar {
+  width: 120px; /* Tamaño reducido */
+  height: 120px; /* Tamaño reducido */
+  border-radius: 50%;
+  position: absolute;
+  top: -70px; /* Ajustado para un mejor alineamiento */
+  left: 50%; /* Centrado */
+  transform: translateX(-50%); /* Centrado */
+}
+
+.login-box h1 {
+  margin: 10px 0 20px; /* Espaciado ajustado */
+  padding: 0;
+  text-align: center;
+  font-size: 32px; /* Tamaño de fuente reducido */
+  font-weight: bold; /* Negrita */
+}
+
+.login-box label {
+  font-size: 18px; /* Tamaño de fuente reducido */
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px; /* Espaciado ajustado */
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(64, 64, 64, 0.8); /* Fondo más oscuro */
+  outline: none;
+  height: 45px; /* Altura ajustada */
+  color: #fff;
+  font-size: 16px; 
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box button[type="submit"] {
+  border: none;
+  outline: none;
+  height: 45px; /* Altura ajustada */
+  background: #ff6600; /* Color de fondo más vibrante */
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: 20px; /* Tamaño de fuente ajustado */
+  border-radius: 5px; /* Radio de borde más sutil */
+  transition: background 0.3s; /* Transición suave */
+}
+
+.login-box button[type="submit"]:hover {
+  cursor: pointer;
+  background: #ffffff; /* Color de fondo al pasar el ratón */
+  color: #ff6600; /* Color del texto al pasar el ratón */
+}
+
+.login-box a {
+  text-decoration: none;
+  font-size: 18px; /* Tamaño de fuente ajustado */
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.login-box a:hover {
+  color: #ffffff; /* Color al pasar el ratón */
+}

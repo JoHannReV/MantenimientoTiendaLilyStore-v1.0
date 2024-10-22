@@ -1,0 +1,63 @@
+@CHARSET "ISO-8859-1";
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images2.alphacoders.com/135/1354021.png');
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo sin distorsión */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+
+
+
+/* Estilo para el título "MANTENIMIENTO EMPLEADO" */
+h1 {
+    font-size: 2.5rem; /* Tamaño de la fuente */
+    font-weight: bold; /* Letras en negrita */
+    color: black; /* Color del texto */
+    background-color: rgba(255, 165, 0, 0.8); /* Fondo naranja con transparencia */
+    padding: 15px; /* Espaciado interno */
+    text-align: center; /* Alineación centrada */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+/* Estilo para el botón de regresar */
+.btn-regresar {
+    background-color: #ff5722; /* Color de fondo naranja */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s, transform 0.3s; /* Efecto de transición */
+}
+
+.btn-regresar:hover {
+    background-color: #e64a19; /* Color de fondo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Aumentar tamaño al pasar el mouse */
+}
+
+/* Estilo para los textos de la tabla */
+.texto-visible {
+    font-family: 'Arial Black', Arial, sans-serif; /* Cambia la fuente a una más gruesa */
+    font-weight: bold; /* Aplica negrita */
+    color: #ff5722; /* Color naranja */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+}
+
+/* Estilo específico para el texto de búsqueda */
+.texto-busqueda {
+    font-family: 'Arial Black', Arial, sans-serif; /* Cambia la fuente a una más gruesa */
+    font-weight: bold; /* Aplica negrita */
+    color: #ff5722; /* Color naranja */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>controladorUsuario</servlet-name>
+  	<display-name>controladorUsuario</display-name>
+  	<description></description>
+  	<servlet-class>controlador.controladorUsuario</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>controladorEmpleado</servlet-name>
+  	<display-name>controladorEmpleado</display-name>
+  	<description></description>
+  	<servlet-class>controlador.controladorEmpleado</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>controladorCliente</servlet-name>
+  	<display-name>controladorCliente</display-name>
+  	<description></description>
+  	<servlet-class>controlador.controladorCliente</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>controladorProducto</servlet-name>
+  	<display-name>controladorProducto</display-name>
+  	<description></description>
+  	<servlet-class>controlador.controladorProducto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controladorUsuario</servlet-name>
+  	<url-pattern>/controladorUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>controladorEmpleado</servlet-name>
+  	<url-pattern>/controladorEmpleado</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>controladorCliente</servlet-name>
+  	<url-pattern>/controladorCliente</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>controladorProducto</servlet-name>
+  	<url-pattern>/controladorProducto</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
