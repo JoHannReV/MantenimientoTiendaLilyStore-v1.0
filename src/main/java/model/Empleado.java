@@ -69,6 +69,8 @@ public class Empleado implements Serializable {
 	@JoinColumn(name="cargoID")
 	private Cargo cargo;
 
+	
+
 	//bi-directional many-to-one association to Usuariosacceso
 	@ManyToOne
 	@JoinColumn(name="usuarioID")
@@ -220,5 +222,7 @@ public class Empleado implements Serializable {
 	public void setUsuariosacceso(Usuariosacceso usuariosacceso) {
 		this.usuariosacceso = usuariosacceso;
 	}
+
+	
 
 }

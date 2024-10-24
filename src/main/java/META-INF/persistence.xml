@@ -5,11 +5,12 @@
     <persistence-unit name="MantenimientoTienda">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>model.Cargo</class>
-        <class>model.Empleado</class>
-        <class>model.Usuariosacceso</class>
         <class>model.Cliente</class>
+        <class>model.Empleado</class>
         <class>model.Producto</class>
         <class>model.Proveedore</class>
+        <class>model.Usuariosacceso</class>
+        <class>model.Venta</class>
       
         <properties>
             <!-- Mostrar y formatear SQL en los logs -->

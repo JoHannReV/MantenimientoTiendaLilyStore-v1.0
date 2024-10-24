@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -19,6 +20,9 @@ public class Producto implements Serializable {
 	@Id
 	@Column(name="CODIGO_PROD")
 	private int codigoProd;
+
+	@Column(name="CATEGORIA_PRO")
+	private String categoriaPro;
 
 	@Column(name="CATEGORIA_PROD")
 	private String categoriaProd;
@@ -65,12 +69,12 @@ public class Producto implements Serializable {
 	@JoinColumn(name="MARCA_ID")
 	private Proveedore proveedore;
 
-	
+	//bi-directional many-to-one association to Venta
+	@OneToMany(mappedBy="producto")
+	private List<Venta> ventas;
 
-	
-	
-    public Producto() {
-    }
+	public Producto() {
+	}
 
 	public int getCodigoProd() {
 		return this.codigoProd;
@@ -80,15 +84,21 @@ public class Producto implements Serializable {
 		this.codigoProd = codigoProd;
 	}
 
+	public String getCategoriaPro() {
+		return this.categoriaPro;
+	}
+
+	public void setCategoriaPro(String categoriaPro) {
+		this.categoriaPro = categoriaPro;
+	}
+
 	public String getCategoriaProd() {
 		return this.categoriaProd;
 	}
 
-	public void setCategoriaPro(String categoriaPro) {
-		this.categoriaProd = categoriaPro;
+	public void setCategoriaProd(String categoriaProd) {
+		this.categoriaProd = categoriaProd;
 	}
-
-	
 
 	public String getDescripcionProd() {
 		return this.descripcionProd;
@@ -192,6 +202,28 @@ public class Producto implements Serializable {
 
 	public void setProveedore(Proveedore proveedore) {
 		this.proveedore = proveedore;
+	}
+
+	public List<Venta> getVentas() {
+		return this.ventas;
+	}
+
+	public void setVentas(List<Venta> ventas) {
+		this.ventas = ventas;
+	}
+
+	public Venta addVenta(Venta venta) {
+		getVentas().add(venta);
+		venta.setProducto(this);
+
+		return venta;
+	}
+
+	public Venta removeVenta(Venta venta) {
+		getVentas().remove(venta);
+		venta.setProducto(null);
+
+		return venta;
 	}
 
 }

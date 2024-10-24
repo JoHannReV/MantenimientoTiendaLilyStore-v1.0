@@ -1,15 +1,19 @@
 package daoImp;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.ParameterMode;
 import javax.persistence.Persistence;
 import javax.persistence.StoredProcedureQuery;
+import javax.persistence.TypedQuery;
 
 import interfaces.iProducto;
 import model.Cargo;
+import model.Cliente;
 import model.Producto;
 import model.Proveedore;
 
@@ -210,5 +214,36 @@ public class productoDao implements iProducto{
 	    return proveedor;
 	}
 
-	
+	public Optional<Producto> buscarProductoporID(Integer codigoProd) { // Cambiar a Integer
+	    // Crear una instancia del EntityManagerFactory una sola vez
+	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("MantenimientoTienda");
+	    EntityManager em = emf.createEntityManager();
+	    Optional<Producto> producto = Optional.empty();
+
+	    try {
+	        // Crear la consulta
+	        TypedQuery<Producto> query = em.createQuery("SELECT p FROM Producto p WHERE p.codigoProd = :codigoProd", Producto.class);
+	        query.setParameter("codigoProd", codigoProd); // Pasar el Integer directamente
+
+	        // Obtener el resultado
+	        producto = Optional.of(query.getSingleResult());
+	    } catch (NoResultException e) {
+	        // Manejar el caso donde no se encuentra el producto
+	        System.out.println("No se encontró el producto con el código: " + codigoProd);
+	    } catch (Exception e) {
+	        // Manejo de otras excepciones
+	        e.printStackTrace();
+	    } finally {
+	        // Cerrar el EntityManager
+	        em.close();
+	    }
+
+	    return producto; // Retornar un Optional
+	}
+
+
 }
+	
+	
+	
+

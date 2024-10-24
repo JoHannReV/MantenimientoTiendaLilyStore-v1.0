@@ -12,8 +12,7 @@ public class testProducto {
 	
 	public static void main(String[] args) {
        
-		//productoDao dao = new productoDao();
-
+	}}
 		/*
 		// Crear una instancia del DAO
 
@@ -84,7 +83,7 @@ public class testProducto {
         }
     */
 		
-		
+		/*
        
                 // Instanciamos el DAO
                 productoDao dao = new productoDao();
@@ -115,12 +114,8 @@ public class testProducto {
                     e.printStackTrace();
                 }
             }
-        
-
+        */
 		
 		
-	}	
-	
-	
 	
 

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -44,6 +45,10 @@ public class Cliente implements Serializable {
 
 	@Column(name="TIPO_DOCUMENTO")
 	private String tipoDocumento;
+
+	//bi-directional many-to-one association to Venta
+	@OneToMany(mappedBy="cliente")
+	private List<Venta> ventas;
 
 	public Cliente() {
 	}
@@ -126,6 +131,28 @@ public class Cliente implements Serializable {
 
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
+	}
+
+	public List<Venta> getVentas() {
+		return this.ventas;
+	}
+
+	public void setVentas(List<Venta> ventas) {
+		this.ventas = ventas;
+	}
+
+	public Venta addVenta(Venta venta) {
+		getVentas().add(venta);
+		venta.setCliente(this);
+
+		return venta;
+	}
+
+	public Venta removeVenta(Venta venta) {
+		getVentas().remove(venta);
+		venta.setCliente(null);
+
+		return venta;
 	}
 
 }

@@ -120,7 +120,6 @@ td {
         <div class="col text-start">
             <a href="Menu.jsp" class="btn btn-menu mt-3">HOME</a>
             <button type="button" class="btn btn-menu mt-3">VENTAS</button>
-            <button type="button" class="btn btn-menu mt-3">REPORTES</button>
         </div>
     </div>
 </div>

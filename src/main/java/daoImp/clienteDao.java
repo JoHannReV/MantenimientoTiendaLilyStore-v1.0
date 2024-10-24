@@ -1,9 +1,12 @@
 package daoImp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import javax.persistence.ParameterMode;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
+import javax.persistence.TypedQuery;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -171,6 +174,35 @@ public class clienteDao implements iCliente{
         }
 		return cliente;
 	}
+
+	@Override
+	
+	public Optional<Cliente> buscarClientePorDocumento(String documentoClie) {
+	    // Crear una instancia del EntityManagerFactory una sola vez
+	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("MantenimientoTienda");
+	    EntityManager em = emf.createEntityManager();
+	    Optional<Cliente> cliente = Optional.empty();
+
+	    try {
+	        // Crear la consulta
+	        TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c WHERE c.documentoClie = :documentoClie", Cliente.class);
+	        query.setParameter("documentoClie", documentoClie);
+	        
+	        // Obtener el resultado
+	        cliente = Optional.of(query.getSingleResult());
+	    } catch (NoResultException e) {
+	        // Manejar el caso donde no se encuentra el cliente
+	        System.out.println("No se encontró el cliente con el documento: " + documentoClie);
+	    } catch (Exception e) {
+	        // Manejo de otras excepciones
+	        e.printStackTrace();
+	    } finally {
+	        // Cerrar el EntityManager
+	        em.close();
+	    }
+	    
+	    return cliente; // Retornar un Optional
+    }
 
 
 }

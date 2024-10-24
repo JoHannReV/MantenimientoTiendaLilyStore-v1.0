@@ -49,28 +49,21 @@ public class controladorProducto extends HttpServlet {
 		String action = request.getParameter("action");
 
 
-		try{
-			if("agregar".equals(action))
-			{
-				agregarProducto(request,response);
-		    }
-			else if("eliminar".equals(action))
-			{
-				eliminarProducto(request,response);
-			}else if ("actualizar".equals(action)) { 
+		try {
+	        if ("agregar".equals(action)) {
+	            agregarProducto(request, response);
+	        } else if ("eliminar".equals(action)) {  
+	            eliminarProducto(request, response);
+	        } else if ("actualizar".equals(action)) { 
 	            modificarProducto(request, response);
-	            }
-			else
-			{
-				throw new IllegalArgumentException("Accion no reconocida");
-			}
-		}
-		 catch(RuntimeException e)
-		{
-			 e.printStackTrace();
-			request.setAttribute("errorMessage","Error: "+e.getMessage());
-			request.getRequestDispatcher("Empleado.jsp").forward(request, response);
-		}
+	        } else {
+	            throw new IllegalArgumentException("Acción no reconocida");
+	        }
+	    } catch (RuntimeException e) {
+	        e.printStackTrace();
+	        request.setAttribute("errorMessage", "Error: " + e.getMessage());
+	        request.getRequestDispatcher("Producto.jsp").forward(request, response);
+	    }
 		
 		
 		
@@ -112,7 +105,7 @@ public class controladorProducto extends HttpServlet {
 	        // Asignar valores al producto
 	        producto.setPrendaProd(prenda);
 	        producto.setNombreProd(nombre);
-	        producto.setCategoriaPro(categoria);
+	        producto.setCategoriaProd(categoria);
 	        producto.setDescripcionProd(descripcion);
 	        producto.setTallaProd(talla);
 	        producto.setNumeroLoteProd(lote);
@@ -163,7 +156,7 @@ public class controladorProducto extends HttpServlet {
 	        
 	        productoAModificar.setPrendaProd(nuevoPrenda);
         	productoAModificar.setNombreProd(nuevoNombre);
-        	productoAModificar.setCategoriaPro(nuevoCategoria);
+        	productoAModificar.setCategoriaProd(nuevoCategoria);
         	productoAModificar.setDescripcionProd(nuevoDescripcion);
         	productoAModificar.setTallaProd(nuevoTalla);
         	productoAModificar.setNumeroLoteProd(nuevoLote);
@@ -202,8 +195,26 @@ public class controladorProducto extends HttpServlet {
 	}
 
 	private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		// TODO Auto-generated method stub
-		
+
+		try {
+	        int codigoProducto = Integer.parseInt(request.getParameter("txtCodigoProducto")); // Este parámetro debe coincidir
+	        System.out.println("CODIGO DE PRODUCTO A ELIMINAR: " + codigoProducto);
+	        
+	        if (codigoProducto <= 0) {
+	            throw new IllegalArgumentException("El código del producto no es válido.");
+	        }
+	        
+	        Producto producto = new Producto();
+	        producto.setCodigoProd(codigoProducto);
+	        
+	        productoDao.eliminarProducto(producto);
+	        
+	        response.sendRedirect(request.getContextPath() + "/controladorProducto");
+	    } catch (RuntimeException e) {
+	        e.printStackTrace();
+	        request.setAttribute("errorMessage", "Error al eliminar producto: " + e.getMessage());
+	        request.getRequestDispatcher("Producto.jsp").forward(request, response);
+	    }
 	}
 
 	

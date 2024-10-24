@@ -4,6 +4,8 @@ import model.Cliente;
 
 import java.util.List;
 
+import com.google.common.base.Optional;
+
 import daoImp.clienteDao;
 
 public class testCliente {
@@ -12,6 +14,20 @@ public class testCliente {
 	 public static void main(String[] args) {
 	clienteDao instance = new clienteDao();
 
+	
+	// Probar el método buscarClientePorDocumento
+    String documentoPrueba = "11111111"; // Cambia esto por un documento de cliente que sepas que existe
+    java.util.Optional<Cliente> cliente = instance.buscarClientePorDocumento(documentoPrueba);
+
+    if (cliente.isPresent()) {
+        System.out.println("Cliente encontrado:");
+        System.out.println("Nombre: " + cliente.get().getNombreClie());
+        System.out.println("Apellido: " + cliente.get().getApellidoClie());
+        // Agrega más campos según sea necesario
+    } else {
+        System.out.println("No se encontró el cliente con el documento: " + documentoPrueba);
+    }
+    
 	//INSERTAR CLIENTE
 	/*
     Cliente cliente = new Cliente();
@@ -75,7 +91,7 @@ public class testCliente {
      System.out.println("Cliente actualizado."); */
 	
 	
-	Cliente clienteParaEliminar = new Cliente();
+	/*Cliente clienteParaEliminar = new Cliente();
     clienteParaEliminar.setCodigoClie(3); 
 
     try {
@@ -85,13 +101,13 @@ public class testCliente {
         System.out.println("Error al eliminar el cliente: " + e.getMessage());
     }
 	
+  */
+}
+	
 
-	
-	
-	
-	
+	 
 	 }
 	 
-}
+
 	
 

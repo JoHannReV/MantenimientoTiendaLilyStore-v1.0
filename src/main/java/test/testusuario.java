@@ -28,12 +28,12 @@ public class testusuario {
             System.out.println("Usuario autenticado con éxito: " + usuario.getUsername());
         } else {
             System.out.println("Credenciales incorrectas o error al ejecutar el procedimiento.");
-        }
+      }*/
 	}
-*/
+
 
         
-	}
+	
 	
 
 

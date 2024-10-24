@@ -73,6 +73,8 @@ body {
                 <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">LilyStore</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            
+                            
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <% 
@@ -96,7 +98,7 @@ body {
                                 <a class="nav-link" href="ControladorVenta?menu=Venta&accion=Listar">REALIZA VENTA</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ControladorFactura?menu=Venta&accion=Listar">FACTURAS</a>
+                                <a class="nav-link" href="controladorCliente?menu=Cliente&accion=Listar">GESTION CLIENTE</a>
                             </li>
                     <% 
                     } else if ("supervisor".equalsIgnoreCase(cargo)) { // Cargo 2
@@ -107,9 +109,7 @@ body {
                             <li class="nav-item">
                                 <a class="nav-link" href="controladorEmpleado?menu=Empleado&accion=Listar">GESTION EMPLEADO</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="ControladorFactura?menu=Venta&accion=Listar">FACTURAS</a>
-                            </li>
+                            
                     <% 
                     } else if ("almacenero".equalsIgnoreCase(cargo)) { // Cargo 3
                     %>
@@ -129,11 +129,9 @@ body {
                                 <a class="nav-link" href="controladorProducto?menu=Producto&accion=Listar">GESTION PRODUCTO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ControladorVenta?menu=Venta&accion=Listar">REALIZA VENTA</a>
+                                <a class="nav-link" href="controladorVenta?menu=Venta&accion=Listar">REALIZA VENTA</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="ControladorFactura?menu=Venta&accion=Listar">FACTURAS</a>
-                            </li>
+                           
                     <% 
                     } else { 
                     %>

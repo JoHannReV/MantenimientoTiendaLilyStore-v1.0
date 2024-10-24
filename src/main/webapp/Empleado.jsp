@@ -180,14 +180,13 @@
 </head>
 <body>
 
- <div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-12 text-center">
-            <!-- Botón para regresar a menu.jsp -->
-<button type="button" class="btn btn-regresar mb-3" onclick="window.location.href = 'Menu.jsp';">MENU</button>
+        <div class="col text-start">
+            <a href="Menu.jsp" class="btn btn-primary mt-3">HOME</a>
+            <a href="controladorCliente?menu=Cliente&accion=Listar" class="btn btn-primary mt-3">CLIENTES</a>
         </div>
     </div>
-</div>
 
 
     

@@ -127,14 +127,11 @@
 
      // Función para eliminar un empleado
      function eliminarEmpleado(codigoEmp) {
-     // Confirmación de eliminación del empleado 
      if (confirm('¿ESTÁS SEGURO DE ELIMINAR A ESTE EMPLEADO?')) {
-         // Crear un formulario temporal para enviar el código del empleado al controlador
          const form = document.createElement("form");
          form.method = "POST"; 
-         form.action = "controladorEmpleado"; // Acción del formulario
+         form.action = "controladorEmpleado"; 
          
-         // Crear un input oculto para enviar el código del empleado
          const input = document.createElement("input");
          input.type = "hidden";
          input.name = "action"; // El nombre debe coincidir con el que esperas en el servlet

@@ -25,6 +25,8 @@ public class Usuariosacceso implements Serializable {
 	@OneToMany(mappedBy="usuariosacceso")
 	private List<Empleado> empleados;
 
+
+
 	public Usuariosacceso() {
 	}
 
@@ -60,18 +62,21 @@ public class Usuariosacceso implements Serializable {
 		this.empleados = empleados;
 	}
 
-	public Empleado addEmpleado(Empleado empleado) {
-		getEmpleados().add(empleado);
-		empleado.setUsuariosacceso(this);
+	public Empleado addEmpleados(Empleado empleados) {
+		getEmpleados().add(empleados);
+		empleados.setUsuariosacceso(this);
 
-		return empleado;
+		return empleados;
 	}
 
-	public Empleado removeEmpleado(Empleado empleado) {
-		getEmpleados().remove(empleado);
-		empleado.setUsuariosacceso(null);
+	public Empleado removeEmpleados(Empleado empleados) {
+		getEmpleados().remove(empleados);
+		empleados.setUsuariosacceso(null);
 
-		return empleado;
+		return empleados;
 	}
+
+	
+
 
 }

@@ -38,20 +38,27 @@ public class controladorUsuario extends HttpServlet {
         String usuario = request.getParameter("txtUsuario");
         String clave = request.getParameter("txtPassword");
 
+        // Verificar si los campos están vacíos
         if (usuario == null || usuario.trim().isEmpty() || clave == null || clave.trim().isEmpty()) {
-            response.sendRedirect("loginSupp.jsp?error=empty");
-            return; }
+            // Redirigir con un mensaje de error por campos vacíos
+            response.sendRedirect("LoginSupp.jsp?error=empty");
+            return; 
+        }
+        
+        // Validar el usuario
         Usuariosacceso usuarioAcceso = usuarioDao.AccesoUsuario(usuario, clave);
 
         if (usuarioAcceso != null) {
+            // Iniciar sesión y redirigir al menú
             EmpleadoDTO empleadoDTO = usuarioDao.obtenerEmpleadoPorusuario(usuario); 
-
             HttpSession session = request.getSession(); 
             session.setAttribute("empleadoDTO", empleadoDTO); 
             RequestDispatcher dispatcher = request.getRequestDispatcher("Menu.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("loginSupp.jsp?error=incorrect");
+            // Redirigir a LoginSupp.jsp con un mensaje de error de credenciales incorrectas
+            response.sendRedirect("LoginSupp.jsp?error=incorrect");
         }
     }
+
 }

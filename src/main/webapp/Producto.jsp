@@ -250,69 +250,73 @@ td {
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
-        <% 
-        List<Producto> listado = (List<Producto>) request.getAttribute("listado"); 
-        if (listado != null && !listado.isEmpty()) { 
-            for (Producto lis : listado) { 
-        %>
-            <tr onclick="mostrarDetallesProducto(
-            <%= lis.getCodigoProd()%>, 
-            '<%= lis.getProveedore()!= null? lis.getProveedore().getNombreProve():""%>', 
-            '<%= lis.getPrendaProd() %>', 
-            '<%= lis.getNombreProd() %>', 
-            '<%= lis.getCategoriaProd() %>', 
-            '<%= lis.getDescripcionProd() %>', 
-            '<%= lis.getTallaProd() %>', 
-            '<%= lis.getNumeroLoteProd() %>', 
-            '<%= lis.getPrecioIngresoProd() %>', 
-            '<%= lis.getGananciaProd() %>',
-            '<%= lis.getDescuento() %>',
-            '<%= lis.getPrecioFinal() %>',
-            '<%= lis.getStock() %>',
-            '<%= lis.getFechaIngreso() %>',
-            '<%= lis.getFechaModificacion() %>'
+   <tbody>
+<% 
+List<Producto> listado = (List<Producto>) request.getAttribute("listado"); 
+if (listado != null && !listado.isEmpty()) { 
+    for (Producto lis : listado) { 
+%>
+    <tr onclick="mostrarDetallesProducto(
+        <%= lis.getCodigoProd()%>, 
+        '<%= lis.getProveedore()!= null? lis.getProveedore().getNombreProve():""%>', 
+        '<%= lis.getPrendaProd() %>', 
+        '<%= lis.getNombreProd() %>', 
+        '<%= lis.getCategoriaProd() %>', 
+        '<%= lis.getDescripcionProd() %>', 
+        '<%= lis.getTallaProd() %>', 
+        '<%= lis.getNumeroLoteProd() %>', 
+        '<%= lis.getPrecioIngresoProd() %>', 
+        '<%= lis.getGananciaProd() %>',
+        '<%= lis.getDescuento() %>',
+        '<%= lis.getPrecioFinal() %>',
+        '<%= lis.getStock() %>',
+        '<%= lis.getFechaIngreso() %>',
+        '<%= lis.getFechaModificacion() %>'
+    )">
+        <td><%= lis.getCodigoProd() %></td>
+        <td><%= lis.getProveedore() != null ? lis.getProveedore().getNombreProve() : "" %></td>
+        <td><%= lis.getPrendaProd() %></td>
+        <td><%= lis.getNombreProd() %></td>
+        <td><%= lis.getCategoriaProd() %></td>
+        <td><%= lis.getDescripcionProd() %></td>
+        <td><%= lis.getTallaProd() %></td>
+        <td><%= lis.getPrecioFinal() %></td>
+        
+        <td>
+            <button type="button" class="btn btn-edit btn-sm" 
+                onclick="editarProducto(
+                    <%= lis.getCodigoProd() %>, 
+                    '<%= lis.getProveedore()!= null ? lis.getProveedore().getNombreProve() : "" %>', 
+                    '<%= lis.getPrendaProd() %>',  
+                    '<%= lis.getNombreProd() %>', 
+                    '<%= lis.getCategoriaProd() %>', 
+                    '<%= lis.getDescripcionProd() %>', 
+                    '<%= lis.getTallaProd() %>', 
+                    '<%= lis.getNumeroLoteProd() %>', 
+                    '<%= lis.getPrecioIngresoProd() %>',
+                    '<%= lis.getDescuento() %>', 
+                    '<%= lis.getStock() %>' 
+                ); event.stopPropagation();">Editar</button>
             
-            )">
-                <td><%= lis.getCodigoProd() %></td>
-                <td><%= lis.getProveedore().getNombreProve()%></td>
-                <td><%= lis.getPrendaProd() %></td>
-                <td><%= lis.getNombreProd() %></td>
-                <td><%= lis.getCategoriaProd() %></td>
-                <td><%= lis.getDescripcionProd() %></td>
-                <td><%= lis.getTallaProd() %></td>
-                <td><%= lis.getPrecioFinal()%></td>
-                
-                <td>
-                    <button type="button" class="btn btn-edit btn-sm" 
-                        onclick="editarProducto(
-                            <%= lis.getCodigoProd() %>, 
-                            '<%= lis.getProveedore()!= null? lis.getProveedore().getNombreProve():""%>', 
-                            '<%= lis.getPrendaProd() %>',  
-                            '<%= lis.getNombreProd() %>', 
-                            '<%= lis.getCategoriaProd() %>', 
-                            '<%= lis.getDescripcionProd() %>', 
-                            '<%= lis.getTallaProd() %>', 
-                            '<%= lis.getNumeroLoteProd() %>', 
-                            '<%= lis.getPrecioIngresoProd() %>',
-                            '<%= lis.getDescuento() %>', 
-                            '<%= lis.getStock() %>' 
-                        ); event.stopPropagation();">Editar</button>
-                        
-                    <button type="button" class="btn btn-delete btn-sm" onclick="eliminarProducto(<%= lis.getCodigoProd() %>)">Eliminar</button>
-                </td>
-            </tr>
-        <% 
-            } 
-        } else { 
-        %>
-            <tr>
-                <td colspan="8">No se encontraron PRODUCTOS.</td> 
-            </tr>
-        <% 
-        } 
-        %>
-        </tbody>
+            <form action="controladorProducto" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');" style="display:inline;">
+                <input type="hidden" name="txtCodigoProducto" value="<%= lis.getCodigoProd() %>">
+                <input type="hidden" name="action" value="eliminar">
+                <button type="submit" class="btn btn-delete btn-sm">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+<% 
+    } 
+} else { 
+%>
+    <tr>
+        <td colspan="9">No se encontraron PRODUCTOS.</td> 
+    </tr>
+<% 
+} 
+%>
+</tbody>
+
     </table>
 </div>
 

@@ -86,35 +86,30 @@
 
 
 
-//Función para eliminar un cliente
- function eliminarCliente(codigoClie) {
-     if (confirm('¿ESTÁS SEGURO DE ELIMINAR A ESTE Cliente?')) {
-         const form = document.createElement("form");
-         form.method = "POST"; 
-         form.action = "controladorCliente"; 
-
-         const input = document.createElement("input");
-         input.type = "hidden";
-         input.name = "action"; 
-         input.value = "eliminar"; 
-
-         const inputCodigo = document.createElement("input");
-         inputCodigo.type = "hidden";
-         inputCodigo.name = "txtCodigoCliente";
-         inputCodigo.value = codigoClie; 
-
-         console.log("Enviando código de cliente para eliminar:", codigoClie); 
-
-         form.appendChild(input); 
-         form.appendChild(inputCodigo); 
-
-         document.body.appendChild(form);
-         form.submit();
+  // Función para eliminar un producto
+     function eliminarProducto(codigoProd) {
+         if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+             $.ajax({
+                 url: 'controladorProducto', // URL del servlet
+                 type: 'POST',
+                 data: {
+                     accion: 'eliminar', // acción específica para eliminar
+                     codigoProd: codigoProd
+                 },
+                 success: function(response) {
+                     alert("Producto eliminado correctamente");
+                     location.reload(); // Recargar la página después de la eliminación
+                 },
+                 error: function(xhr, status, error) {
+                     alert("Hubo un error al eliminar el producto: " + error);
+                 }
+             });
+         }
      }
- }
 
-
+     
      $(document).ready(function() {
-         $('#tablaClientes').DataTable();
+         $('#tablaProductos').DataTable();
      });
+     
      
